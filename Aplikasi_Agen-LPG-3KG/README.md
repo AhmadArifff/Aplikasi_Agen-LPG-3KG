@@ -1,4 +1,14 @@
-# Instalasi Aplikasi CodeIgniter 4
+# Instalasi Aplikasi Agen LPG
+
+## Deskripsi Proyek
+
+Aplikasi Agen LPG adalah sistem distribusi gas LPG yang dirancang untuk memfasilitasi agen dalam merencanakan distribusi gas, mengelola transaksi pembayaran, dan melakukan autentikasi pengguna. Aplikasi ini dibangun menggunakan framework CodeIgniter 4.
+
+## Fitur Utama
+
+- **Autentikasi Pengguna**: Pengguna dapat mendaftar dan masuk ke dalam sistem.
+- **Perencanaan Distribusi**: Agen dapat merencanakan distribusi gas ke basis yang terdaftar.
+- **Pelacakan Transaksi Pembayaran**: Pengguna dapat memantau status pembayaran untuk basis LPG.
 
 ## Persyaratan Server
 
@@ -6,33 +16,18 @@ Pastikan server Anda memenuhi persyaratan berikut:
 
 - PHP versi 7.4 atau lebih tinggi
 - Ekstensi PHP yang diaktifkan:
-     - [intl](http://php.net/manual/en/intl.requirements.php)
-     - [libcurl](http://php.net/manual/en/curl.requirements.php) (untuk HTTP\CURLRequest)
-     - json (aktif secara default)
-     - [mbstring](http://php.net/manual/en/mbstring.installation.php)
-     - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-     - xml (aktif secara default)
-- Dependensi Composer:
-     - `kint-php/kint`
-     - `laminas/laminas-escaper`
-     - `psr/log`
-     - `phpoffice/phpspreadsheet`
-- Dependensi pengembangan (opsional):
-     - `codeigniter/coding-standard`
-     - `fakerphp/faker`
-     - `friendsofphp/php-cs-fixer`
-     - `mikey179/vfsstream`
-     - `nexusphp/cs-config`
-     - `phpunit/phpunit`
-     - `predis/predis`
-- Ekstensi tambahan yang disarankan (opsional, sesuai kebutuhan):
-     - imagick, gd, exif, simplexml, mysqli, oci8, pgsql, sqlsrv, sqlite3, memcache, memcached, redis, dom, libxml, xdebug, fileinfo, readline
+    - intl
+    - libcurl (untuk HTTP\CURLRequest)
+    - json (aktif secara default)
+    - mbstring
+    - mysqlnd
+    - xml (aktif secara default)
 
 ## Langkah Instalasi
 
 1. **Clone Repository**
      ```bash
-     git clone https://github.com/AhmadArifff/Aplikasi_Agen-LPG-3KG.git
+     git clone https://github.com/username/repo.git
      ```
      Atau salin folder aplikasi ke direktori web server Anda.
 
@@ -52,9 +47,9 @@ Pastikan server Anda memenuhi persyaratan berikut:
      - Contoh konfigurasi di `.env`:
          ```
          database.default.hostname = localhost
-         database.default.database = codeigniter
-         database.default.username = root
-         database.default.password = 
+         database.default.database = nama_database
+         database.default.username = user_database
+         database.default.password = password_database
          database.default.DBDriver = MySQLi
          ```
 
@@ -69,7 +64,7 @@ Pastikan server Anda memenuhi persyaratan berikut:
      - Jika aplikasi menggunakan migrasi database:
          ```bash
          php spark migrate
-         php spark db:seed DatabaseSeeder
+         php spark db:seed
          ```
 
 6. **Akses Aplikasi**
@@ -79,4 +74,3 @@ Pastikan server Anda memenuhi persyaratan berikut:
 
 - [Dokumentasi CodeIgniter 4](https://codeigniter4.github.io/userguide/)
 - [Forum CodeIgniter](http://forum.codeigniter.com)
-

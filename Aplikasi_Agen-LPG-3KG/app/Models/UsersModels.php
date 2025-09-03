@@ -22,8 +22,6 @@ class UsersModels extends Model
         "u_referensi",
         "u_email",
         "u_create_at",
-        "u_updated_at",
-        "u_deleted_at",
         "u_nik",
         "u_nama",
         "u_tempat_lahir",
@@ -37,67 +35,86 @@ class UsersModels extends Model
     ];
 
     // Dates
-    protected $useTimestamps        = false;
+    protected $useTimestamps        = true;
     protected $dateFormat           = 'datetime';
     protected $createdField         = 'u_created_at';
     protected $updatedField         = 'u_updated_at';
     protected $deletedField         = 'u_deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'u_username' => 'required|min_length[3]|max_length[20]|is_unique[tb_user.u_username]',
+        'u_password' => 'required|min_length[6]',
+        'u_email'    => 'required|valid_email|is_unique[tb_user.u_email]',
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
     // Callbacks
     protected $allowCallbacks       = true;
-    protected $beforeInsert         = [];
+    protected $beforeInsert         = ['hashPassword'];
     protected $afterInsert          = [];
-    protected $beforeUpdate         = [];
+    protected $beforeUpdate         = ['hashPassword'];
     protected $afterUpdate          = [];
     protected $beforeFind           = [];
     protected $afterFind            = [];
     protected $beforeDelete         = [];
     protected $afterDelete          = [];
+
+    protected function hashPassword(array $data)
+    {
+        if (isset($data['data']['u_password'])) {
+            $data['data']['u_password'] = password_hash($data['data']['u_password'], PASSWORD_DEFAULT);
+        }
+        return $data;
+    }
+
     public function datauser()
     {
-        return $this->db->table('tb_user')->Get()->getResultArray();
+        return $this->findAll();
     }
+
     public function getuserreferensiowner()
     {
-        $query = $this->db->query('SELECT * FROM `tb_user` WHERE u_role = "coordinator"');
-        return $query->getResult();
+        return $this->where('u_role', 'owner')->findAll();
     }
+
     public function getuserreferensicoordinator()
     {
-        $query = $this->db->query('SELECT * FROM `tb_user` WHERE u_role = "coordinator"');
-        return $query->getResult();
+        return $this->where('u_role', 'coordinator')->findAll();
     }
+
     public function getuserreferensiadmin()
     {
-        $query = $this->db->query('SELECT * FROM `tb_user` WHERE u_role = "coordinator" OR u_role = "owner"');
-        return $query->getResult();
+        return $this->whereIn('u_role', ['coordinator', 'owner'])->findAll();
     }
+
     public function dataprovinsi()
     {
-        return $this->db->table('tbl_provinsi')->Get()->getResultArray();
+        return $this->db->table('tbl_provinsi')->get()->getResultArray();
     }
+
     public function datakabupaten1($id_provinsi)
     {
-        return $this->db->table('tbl_kabupaten')->where('id_provinsi', $id_provinsi)->Get()->getResultArray();
+        return $this->db->table('tbl_kabupaten')->where('id_provinsi', $id_provinsi)->get()->getResultArray();
     }
+
     public function datakabupaten()
     {
-        return $this->db->table('tbl_kabupaten')->Get()->getResultArray();
+        return $this->db->table('tbl_kabupaten')->get()->getResultArray();
     }
+
     public function datakecamatan1($id_kabupaten)
     {
-        return $this->db->table('tbl_kecamatan')->where('id_kabupaten', $id_kabupaten)->Get()->getResultArray();
+        return $this->db->table('tbl_kecamatan')->where('id_kabupaten', $id_kabupaten)->get()->getResultArray();
     }
+
     public function datakecamatan()
     {
-        return $this->db->table('tbl_kecamatan')->Get()->getResultArray();
+        return $this->db->table('tbl_kecamatan')->get()->getResultArray();
     }
+
     public function countdatauser($table)
     {
         return $this->db->table($table)->countAllResults();

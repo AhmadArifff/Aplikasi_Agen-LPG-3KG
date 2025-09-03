@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div class="dropdown-list-content dropdown-list-icons">
-                                <!-- <a href="#" class="dropdown-item dropdown-item-unread">
+                                <a href="#" class="dropdown-item dropdown-item-unread">
                                     <div class="dropdown-item-icon bg-primary text-white">
                                         <i class="fas fa-code"></i>
                                     </div>
@@ -177,108 +177,7 @@
                                         <b>You</b> and <b>Dedik Sugiharto</b> are now friends
                                         <div class="time">10 Hours Ago</div>
                                     </div>
-                                </a> -->
-                                <?php $current_time = time();
-                                foreach ($NotipDataTransaksi as $tb_transaksi) {
-                                    $transaksi_time = strtotime($tb_transaksi['waktu']);
-                                    $waktu = $current_time - strtotime($tb_transaksi['waktu']);
-                                    $jam = floor($waktu / 3600);
-                                    $menit = floor(($waktu % 3600) / 60); ?>
-                                    <div class="dropdown-item">
-                                        <?php $approved = $tb_transaksi['t_approval_by'];
-                                        if ($approved != null) { ?>
-                                            <div class="dropdown-item-icon bg-success text-white">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            <div class="dropdown-item-desc">
-                                                <?php foreach ($NotipDataUser as $tb_user) {
-                                                    if ($tb_transaksi['u_id'] == $tb_user['u_id']) { ?>
-                                                        <?php foreach ($NotipDataPaket as $tb_paket) {
-                                                            if ($tb_transaksi['p_id'] == $tb_paket['p_id']) { ?>
-                                                                <?= strtoupper('<b style="font-weight: bold; font-size: 13px;">' . $tb_user['u_nama']) . '</b> telah mengambil paket <b style="font-weight: bold; font-size: 13px;">' . $tb_paket['p_nama'] . '</b>, dengan jumlah <b style="font-weight: bold; font-size: 13px;">' . $tb_transaksi['t_qty'] . "</b> paket."; ?>
-                                                <?php }
-                                                        }
-                                                    }
-                                                } ?>
-                                                <div class="time"><a href="<?= base_url('admin/datatransaksi/noapprovedtransaksi/' . $tb_transaksi['t_id'] . '/noapproved') ?>" class="btn btn-primary btn-sm" disabled>Telah Disetujui</a></div>
-                                                <div class="time"><?= $jam . " jam, " . $menit . " menit yang lalu" ?></div>
-                                            </div>
-                                        <?php
-                                        } else { ?>
-                                            <div class="dropdown-item-icon bg-danger text-white">
-                                                <i class="fas fa-exclamation-triangle"></i>
-                                            </div>
-                                            <div class="dropdown-item-desc">
-                                                <?php foreach ($NotipDataUser as $tb_user) {
-                                                    if ($tb_transaksi['u_id'] == $tb_user['u_id']) { ?>
-                                                        <?php foreach ($NotipDataPaket as $tb_paket) {
-                                                            if ($tb_transaksi['p_id'] == $tb_paket['p_id']) { ?>
-                                                                <?= strtoupper('<b style="font-weight: bold; font-size: 13px;">' . $tb_user['u_nama']) . '</b> telah mengambil paket <b style="font-weight: bold; font-size: 13px;">' . $tb_paket['p_nama'] . '</b>, dengan jumlah <b style="font-weight: bold; font-size: 13px;">' . $tb_transaksi['t_qty'] . "</b> paket."; ?>
-                                                <?php }
-                                                        }
-                                                    }
-                                                } ?>
-                                                <a href="#" data-href="<?= base_url('admin/datatransaksi/approvedtransaksi/' . $tb_transaksi['t_id'] . '/approved') ?>" onclick="confirmToApproved(this)" class="btn btn-warning btn-sm">Belum Disetujui</a>
-                                                <div class="time"><?= $jam . " jam, " . $menit . " menit yang lalu" ?></div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                <?php } ?>
-                                <!-- <a href="#" class="dropdown-item">
-                                    <div class="dropdown-item-icon bg-info text-white">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
-                                    <div class="dropdown-item-desc">
-                                        Welcome to Stisla template!
-                                        <div class="time">Yesterday</div>
-                                    </div>
-                                </a> -->
-                                <?php $current_time = time();
-                                foreach ($NotipDataTransaksi as $tb_transaksi) {
-                                    $transaksi_time = strtotime($tb_transaksi['waktu']);
-                                    $waktu = $current_time - strtotime($tb_transaksi['waktu']);
-                                    $jam = floor($waktu / 3600);
-                                    $menit = floor(($waktu % 3600) / 60); ?>
-                                    <div class="dropdown-item">
-                                        <?php $approved = $tb_transaksi['t_approval_by'];
-                                        if ($approved != null) { ?>
-                                            <div class="dropdown-item-icon bg-success text-white">
-                                                <i class="fas fa-check"></i>
-                                            </div>
-                                            <div class="dropdown-item-desc">
-                                                <?php foreach ($NotipDataUser as $tb_user) {
-                                                    if ($tb_transaksi['u_id'] == $tb_user['u_id']) { ?>
-                                                        <?php foreach ($NotipDataPaket as $tb_paket) {
-                                                            if ($tb_transaksi['p_id'] == $tb_paket['p_id']) { ?>
-                                                                <?= strtoupper('<b style="font-weight: bold; font-size: 13px;">' . $tb_user['u_nama']) . '</b> telah mengambil paket <b style="font-weight: bold; font-size: 13px;">' . $tb_paket['p_nama'] . '</b>, dengan jumlah <b style="font-weight: bold; font-size: 13px;">' . $tb_transaksi['t_qty'] . "</b> paket."; ?>
-                                                <?php }
-                                                        }
-                                                    }
-                                                } ?>
-                                                <div class="time"><a href="<?= base_url('admin/datatransaksi/noapprovedtransaksi/' . $tb_transaksi['t_id'] . '/noapproved') ?>" class="btn btn-primary btn-sm" disabled>Telah Disetujui</a></div>
-                                                <div class="time"><?= $jam . " jam, " . $menit . " menit yang lalu" ?></div>
-                                            </div>
-                                        <?php
-                                        } else { ?>
-                                            <div class="dropdown-item-icon bg-danger text-white">
-                                                <i class="fas fa-exclamation-triangle"></i>
-                                            </div>
-                                            <div class="dropdown-item-desc">
-                                                <?php foreach ($NotipDataUser as $tb_user) {
-                                                    if ($tb_transaksi['u_id'] == $tb_user['u_id']) { ?>
-                                                        <?php foreach ($NotipDataPaket as $tb_paket) {
-                                                            if ($tb_transaksi['p_id'] == $tb_paket['p_id']) { ?>
-                                                                <?= strtoupper('<b style="font-weight: bold; font-size: 13px;">' . $tb_user['u_nama']) . '</b> telah mengambil paket <b style="font-weight: bold; font-size: 13px;">' . $tb_paket['p_nama'] . '</b>, dengan jumlah <b style="font-weight: bold; font-size: 13px;">' . $tb_transaksi['t_qty'] . "</b> paket."; ?>
-                                                <?php }
-                                                        }
-                                                    }
-                                                } ?>
-                                                <a href="#" data-href="<?= base_url('admin/datatransaksi/approvedtransaksi/' . $tb_transaksi['t_id'] . '/approved') ?>" onclick="confirmToApproved(this)" class="btn btn-warning btn-sm">Belum Disetujui</a>
-                                                <div class="time"><?= $jam . " jam, " . $menit . " menit yang lalu" ?></div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                <?php } ?>
+                                </a>
                             </div>
                             <div class="dropdown-footer text-center">
                                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>

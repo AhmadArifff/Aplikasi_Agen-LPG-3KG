@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * This file is part of the CodeIgniter 4 framework.
+ *
+ * (c) CodeIgniter Foundation <foundation@codeigniter.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use CodeIgniter\CodeIgniter;
+
+require_once 'system/CodeIgniter.php';
+
+// Create a new instance of the application
+$app = new CodeIgniter();
+
+// Run the application
+$app->run();
