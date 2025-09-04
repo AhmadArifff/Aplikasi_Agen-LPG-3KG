@@ -25,9 +25,3 @@ Route::get('/password/request', function () {
 Route::get('/', function () {
     return view('admin.layout.default');
 });
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard'); // buat view dashboard.blade.php
-    })->name('dashboard');
-});
-
