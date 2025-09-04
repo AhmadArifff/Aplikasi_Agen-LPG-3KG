@@ -8,13 +8,17 @@
 <body class="h-screen flex flex-col">
 
     <!-- Navbar -->
-    <header class="w-full bg-red-600 text-white flex justify-between items-center px-6 py-3 shadow">
-        <div class="font-bold text-lg">PERTAMINA</div>
-        <button class="flex items-center space-x-2 hover:text-gray-200">
-            <img src="{{ asset('images/power-button.png') }}" alt="Dashboard Icon" class="w-7 h-7.">
-            <span>Keluar</span>
-        </button>
-    </header>
+<header class="w-full bg-red-600 text-white flex justify-between items-center px-6 py-3 shadow">
+    <div class="flex items-center space-x-3">
+        <img src="{{ asset('images/logo-pertamina.png') }}"  class="w-8 h-8">
+        <span class="font-bold text-lg">PERTAMINA</span>
+    </div>
+    <button class="flex items-center space-x-2 hover:text-gray-200">
+        <img src="{{ asset('images/power-button.png') }}" alt="Logout Icon" class="w-7 h-7">
+        <span>Keluar</span>
+    </button>
+</header>
+
 
     <!-- Main Layout -->
     <div class="flex flex-1 overflow-hidden">
