@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin.layout.default');
 });
+Route::get('/rekapitulasi', function () {
+    return view('admin.layout.rekapitulasi');
+});
