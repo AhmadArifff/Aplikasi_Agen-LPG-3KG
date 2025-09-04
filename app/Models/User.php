@@ -2,44 +2,36 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $table = 'tb_user';
+    protected $primaryKey = 'u_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
+    // mapping timestamps custom
+    const CREATED_AT = 'u_created_at';
+    const UPDATED_AT = 'u_updated_at';
+    const DELETED_AT = 'u_deleted_at';
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'u_username', 'u_password', 'u_fullname', 'u_role', 'u_referensi',
+        'u_email', 'u_nik', 'u_nama', 'u_tempat_lahir', 'u_tanggal_lahir',
+        'u_jenis_kelamin', 'u_provinsi', 'u_kota', 'u_kelurahan',
+        'u_kecamatan', 'u_kodepos',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['u_password'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    // Auth::attempt() akan memanggil ini untuk mendapatkan hash password
+    public function getAuthPassword()
+    {
+        return $this->u_password;
+    }
 }

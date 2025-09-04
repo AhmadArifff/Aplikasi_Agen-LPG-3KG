@@ -1,3 +1,4 @@
+<!-- filepath: c:\xampp\htdocs\Aplikasi_Agen-LPG-3KG\resources\views\admin\layout\default.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,6 @@
                     <span>📊</span>
                     <span>Dashboard</span>
                 </a>
-
                 <!-- Perencanaan -->
                 <div class="group">
                     <button class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-gray-200">
@@ -56,27 +56,22 @@
                         <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200">Rekapitulasi</a>
                     </div>
                 </div>
-
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
                     <span>🚚</span>
                     <span>Penyaluran</span>
                 </a>
-
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
                     <span>📖</span>
                     <span>Penerimaan</span>
                 </a>
-
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
                     <span>🗓️</span>
                     <span>Verifikasi Bulanan</span>
                 </a>
-
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
                     <span>📅</span>
                     <span>Verifikasi Triwulan</span>
                 </a>
-
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
                     <span>✅</span>
                     <span>Verifikasi Desember</span>
@@ -86,8 +81,7 @@
 
         <!-- Content Area -->
         <main class="flex-1 bg-white p-6 overflow-y-auto">
-            <h1 class="text-2xl font-bold text-gray-700">Content Area</h1>
-            <p class="mt-2 text-gray-500">Isi konten admin panel tampil di sini...</p>
+            @yield('content') <!-- Bagian ini akan diisi oleh file lain -->
         </main>
     </div>
 
