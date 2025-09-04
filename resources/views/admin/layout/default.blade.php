@@ -11,14 +11,7 @@
     <header class="w-full bg-red-600 text-white flex justify-between items-center px-6 py-3 shadow">
         <div class="font-bold text-lg">PERTAMINA</div>
         <button class="flex items-center space-x-2 hover:text-gray-200">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                 fill="none" viewBox="0 0 24 24" 
-                 stroke-width="1.5" stroke="currentColor" 
-                 class="w-5 h-5">
-                <path stroke-linecap="round" 
-                      stroke-linejoin="round" 
-                      d="M15.75 9V5.25m0 0a3 3 0 00-3-3h-1.5a3 3 0 00-3 3V9m7.5 0h-9M4.5 9h15M5.25 9v10.5a3 3 0 003 3h7.5a3 3 0 003-3V9" />
-            </svg>
+            <img src="{{ asset('images/power-button.png') }}" alt="Dashboard Icon" class="w-7 h-7.">
             <span>Keluar</span>
         </button>
     </header>
@@ -34,7 +27,7 @@
             <div class="text-xs font-semibold text-gray-500 uppercase mb-2">Navigasi</div>
             <nav class="space-y-1">
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <span>📊</span>
+                    <img src="{{ asset('images/pie-chart.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Dashboard</span>
                 </a>
 
@@ -42,7 +35,7 @@
                 <div class="group">
                     <button class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-gray-200">
                         <span class="flex items-center space-x-2">
-                            <span>📝</span>
+                            <img src="{{ asset('images/arrow-right.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                             <span>Perencanaan</span>
                         </span>
                         <svg class="w-4 h-4 transform group-hover:rotate-90 transition" fill="none" 
@@ -53,42 +46,59 @@
                     </button>
                     <div class="ml-6 mt-1 space-y-1">
                         <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200">Form</a>
-                        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200">Rekapitulasi</a>
+                        <a href="{{ url('/rekapitulasi') }}" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
+                            <span>Rekapitulasi</span>
+                        </a>
                     </div>
                 </div>
 
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <span>🚚</span>
+                    <img src="{{ asset('images/arrow-left.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Penyaluran</span>
                 </a>
 
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <span>📖</span>
+                    <img src="{{ asset('images/open-book.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Penerimaan</span>
                 </a>
 
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <span>🗓️</span>
+                    <img src="{{ asset('images/calendar.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Verifikasi Bulanan</span>
                 </a>
 
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <span>📅</span>
+                    <img src="{{ asset('images/calendar (1).png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Verifikasi Triwulan</span>
                 </a>
 
                 <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <span>✅</span>
+                    <img src="{{ asset('images/calendar (1).png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Verifikasi Desember</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
+                    <img src="{{ asset('images/pie-chart.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
+                    <span>IN / OUT Agen</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
+                    <img src="{{ asset('images/pencil.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
+                    <span>Input Harian</span>
+                </a><a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
+                    <img src="{{ asset('images/troubleshoot.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
+                    <span>Master</span>
+                </a>
+                </a><a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
+                    <img src="{{ asset('images/checkmark.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
+                    <span>Pendaftaran Pangkalan</span>
                 </a>
             </nav>
         </aside>
 
         <!-- Content Area -->
         <main class="flex-1 bg-white p-6 overflow-y-auto">
-            <h1 class="text-2xl font-bold text-gray-700">Content Area</h1>
-            <p class="mt-2 text-gray-500">Isi konten admin panel tampil di sini...</p>
+            @yield('content')
         </main>
+
     </div>
 
 </body>
