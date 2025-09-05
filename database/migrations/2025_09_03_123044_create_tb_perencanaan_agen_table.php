@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_perencanaan_agen', function (Blueprint $table) {
-            $table->increments('pa_id');
+            $table->string('pa_id', 255);
             
             $table->date('pa_tgl_awal');
             $table->date('pa_tgl_akhir');
@@ -21,7 +21,9 @@ return new class extends Migration
             $table->char('w_id', 4);
             $table->unsignedInteger('pklan_id');
             
-            $table->integer('pa_jumlah');
+            $table->string('pa_pembayaran', 100)->nullable();
+            $table->integer('pa_jumlah')->nullable();
+            $table->dateTime('pa_jadwal')->nullable();
 
             // timestamps custom
             $table->timestamp('pa_created_at')->useCurrent();

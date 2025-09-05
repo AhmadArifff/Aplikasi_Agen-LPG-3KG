@@ -1,66 +1,191 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplikasi Agen LPG 3KG
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi ini adalah sistem manajemen perencanaan dan penyaluran LPG 3KG berbasis web yang dibangun menggunakan Laravel.
 
-## About Laravel
+## Persyaratan Sistem
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Sebelum memulai, pastikan Anda memiliki persyaratan berikut:
+- **PHP**: Versi `^8.1` atau lebih baru
+- **Composer**: Dependency manager untuk PHP
+- **Node.js**: Versi `^16` atau lebih baru
+- **NPM**: Paket manajer untuk Node.js
+- **Database**: MySQL atau MariaDB
+- **XAMPP/WAMP**: Untuk menjalankan server lokal (opsional)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Langkah Instalasi
 
-## Learning Laravel
+Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clone Repository
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Clone repository ini ke komputer Anda:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+git clone https://github.com/AhmadArifff/Aplikasi_Agen-LPG-3KG.git
+```
 
-## Laravel Sponsors
+Masuk ke direktori proyek:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+cd Aplikasi_Agen-LPG-3KG
+```
 
-### Premium Partners
+### 2. Instal Dependensi PHP
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Gunakan Composer untuk menginstal dependensi PHP:
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Instal Dependensi Frontend
 
-## Code of Conduct
+Gunakan NPM untuk menginstal dependensi frontend:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+npm install
+```
 
-## Security Vulnerabilities
+### 4. Konfigurasi File .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Salin file `.env.example` menjadi `.env`:
 
-## License
+```bash
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Buka file `.env` dan sesuaikan konfigurasi berikut:
+
+```env
+APP_NAME="Aplikasi Agen LPG 3KG"
+APP_ENV=local
+APP_KEY=base64:GENERATE_KEY
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Pastikan untuk mengganti `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` sesuai dengan konfigurasi database Anda.
+
+### 5. Generate Application Key
+
+Jalankan perintah berikut untuk membuat application key:
+
+```bash
+php artisan key:generate
+```
+
+### 6. Migrasi dan Seed Database
+
+Jalankan migrasi untuk membuat tabel di database:
+
+```bash
+php artisan migrate
+```
+
+Jalankan seeder untuk mengisi data awal:
+
+```bash
+php artisan db:seed
+```
+
+### 7. Build Frontend Assets
+
+Untuk mengompilasi aset frontend, jalankan:
+
+```bash
+npm run dev
+```
+
+Jika Anda ingin membangun aset untuk produksi, gunakan:
+
+```bash
+npm run build
+```
+
+### 8. Jalankan Server
+
+Jalankan server Laravel menggunakan perintah berikut:
+
+```bash
+php artisan serve
+```
+
+Akses aplikasi di browser Anda melalui URL:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## Fitur Utama
+
+- **Perencanaan**: Kelola data perencanaan LPG 3KG.
+- **Penyaluran**: Kelola data penyaluran LPG 3KG.
+- **Import Data**: Import data perencanaan dari file CSV atau Excel.
+- **Rekapitulasi**: Lihat laporan rekapitulasi data.
+
+---
+
+## Struktur Proyek
+
+- `app/Models`: Berisi model untuk database.
+- `app/Http/Controllers`: Berisi controller untuk logika aplikasi.
+- `resources/views`: Berisi file Blade untuk tampilan frontend.
+- `routes/web.php`: Berisi definisi rute aplikasi.
+- `database/migrations`: Berisi file migrasi untuk struktur database.
+- `database/seeders`: Berisi seeder untuk data awal.
+
+---
+
+## Troubleshooting
+
+Jika Anda mengalami masalah, berikut adalah beberapa langkah yang dapat membantu:
+
+- **Periksa Log Laravel**: Log error dapat ditemukan di `storage/logs/laravel.log`.
+- **Perbarui Composer dan NPM**: Jalankan perintah berikut untuk memperbarui dependensi:
+
+    ```bash
+    composer update
+    npm update
+    ```
+
+- **Hapus Cache**: Bersihkan cache aplikasi dengan perintah:
+
+    ```bash
+    php artisan cache:clear
+    php artisan config:clear
+    php artisan route:clear
+    php artisan view:clear
+    ```
+
+---
+
+## Kontribusi
+
+Kontribusi sangat terbuka! Silakan fork repository ini dan buat pull request untuk fitur atau perbaikan bug.
+
+---
+
+## Lisensi
+
+Proyek ini menggunakan lisensi [MIT](LICENSE).
+
+---
+
+## Kontak
+
+Jika ada pertanyaan atau saran, silakan hubungi:
+
+- Ahmad Arif - [ahmadarif@example.com](mailto:ahmadarif@example.com)
+- [GitHub Issues](https://github.com/AhmadArifff/Aplikasi_Agen-LPG-3KG/issues)
+
