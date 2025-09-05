@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RekapitulasiController;
+use App\Http\Controllers\HargaKecamatanController;
 
 // Tambahkan di route atau middleware
 Route::fallback(function () {
@@ -59,3 +61,8 @@ Route::middleware('auth')->group(function () {
 
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/rekapitulasi', [RekapitulasiController::class, 'index'])->name('rekapitulasi.index');
+Route::get('/rekapitulasi/data', [RekapitulasiController::class, 'getData'])->name('rekapitulasi.data');
+
+Route::get('/harga-per-kecamatan', [HargaKecamatanController::class, 'index'])
+    ->name('harga.kecamatan.index');

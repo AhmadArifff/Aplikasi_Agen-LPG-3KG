@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Wilayah;
 
 class Pangkalan extends Model
 {
@@ -32,9 +33,13 @@ class Pangkalan extends Model
         'pklan_no_telepon',
     ];
 
-    // Relasi: Pangkalan milik satu Wilayah
     public function wilayah()
     {
         return $this->belongsTo(Wilayah::class, 'w_id', 'w_id');
+    }
+
+    public function perencanaan()
+    {
+        return $this->hasMany(PerencanaanAgen::class, 'pklan_id', 'pklan_id');
     }
 }
