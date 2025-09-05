@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Pertamina - Sim3lon</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/pertamina.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="h-screen flex flex-col">
@@ -84,9 +85,23 @@
                     <img src="{{ asset('images/pie-chart.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>IN / OUT Agen</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
-                    <img src="{{ asset('images/pencil.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
-                    <span>Input Harian</span>
+                <div class="group">
+    <button class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-gray-200">
+        <span class="flex items-center space-x-2">
+            <img src="{{ asset('images/pencil.png') }}" alt="Input Icon" class="w-3.5 h-3.">
+            <span>Input Harian</span>
+        </span>
+        <svg class="w-4 h-4 transform group-hover:rotate-90 transition" fill="none" 
+             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+    </button>
+    <div class="ml-6 mt-1 space-y-1">
+        <a href="{{ url('/harga-per-kecamatan') }}" class="block px-3 py-2 rounded hover:bg-gray-200">Harga Per Kecamatan</a>
+        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200">Stok Per Pangkalan</a>
+    </div>
+</div>
                 </a><a href="#" class="flex items-center space-x-2 px-3 py-2 rounded hover:bg-gray-200">
                     <img src="{{ asset('images/troubleshoot.png') }}" alt="Dashboard Icon" class="w-3.5 h-3.">
                     <span>Master</span>
