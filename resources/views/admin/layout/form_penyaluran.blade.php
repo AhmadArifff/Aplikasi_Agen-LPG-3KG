@@ -273,7 +273,7 @@
     </div>
     <!-- Table Card -->
     <div class="bg-white border rounded-lg p-6 m-5 shadow-sm overflow-x-auto">
-        <h2 class="text-lg font-semibold mb-4 text-gray-700">Perencanaan Agen</h2>
+        <h2 class="text-lg font-semibold mb-4 text-gray-700">Penyaluran Agen</h2>
         <table id="perencanaanTable" class="min-w-full table-auto border border-gray-300 text-sm">
             <thead id="tableHeader" class="text-gray-700">
                 <!-- Header tabel akan diisi secara dinamis -->
