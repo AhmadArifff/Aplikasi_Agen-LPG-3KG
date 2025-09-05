@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('tb_perencanaan_agen', function (Blueprint $table) {
+        Schema::create('tb_perencanaan_agen_rekap', function (Blueprint $table) {
             $table->id('pa_id');
-            $table->unsignedBigInteger('pa_pangkalan_id'); 
-            $table->string('pa_bulan', 7); 
+            $table->unsignedInteger('pa_pangkalan_id'); // Changed to unsignedInteger
+            $table->string('pa_bulan', 7);
             $table->enum('pa_status', ['Cashless', 'Non-Cashless'])->default('Cashless');
             $table->integer('pa_alokasi')->default(0);
 
@@ -24,12 +24,15 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key
-            $table->foreign('pa_pangkalan_id')->references('p_id')->on('tb_pangkalan')->onDelete('cascade');
+            $table->foreign('pa_pangkalan_id')
+                  ->references('pklan_id')
+                  ->on('tb_pangkalan')
+                  ->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('tb_perencanaan_agen');
+        Schema::dropIfExists('tb_perencanaan_agen_rekap');
     }
 };

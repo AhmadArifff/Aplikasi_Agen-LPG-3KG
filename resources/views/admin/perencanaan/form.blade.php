@@ -259,7 +259,7 @@
                 <button type="button" id="btnTampilkan" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow">
                     Tampilkan
                 </button>
-                <button type="button" id="btnImport" class="bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded shadow relative" style="width: 140px; min-width: 120px;">
+                <button type="button" id="btnImport" class="bg-blue-400 hover:bg-blue-500 text-white px-4 py-2 rounded shadow relative" style="width: 140px; min-width: 120px;" disabled>
                     Import Data
                     <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
                         <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">

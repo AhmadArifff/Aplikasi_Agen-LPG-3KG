@@ -32,9 +32,15 @@ Masuk ke direktori proyek:
 cd Aplikasi_Agen-LPG-3KG
 ```
 
-### 2. Instal Dependensi PHP
+### 2. Instal Dependensi PHP:
 
-Gunakan Composer untuk menginstal dependensi PHP:
+Sebelum menjalankan `composer install`, hapus terlebih dahulu folder `vendor` dan file `composer.lock` jika sudah ada:
+
+```bash
+rm -rf vendor composer.lock
+```
+
+Kemudian instal dependensi PHP dengan Composer:
 
 ```bash
 composer install
@@ -48,9 +54,15 @@ Gunakan NPM untuk menginstal dependensi frontend:
 npm install
 ```
 
-### 4. Konfigurasi File .env
+### 4. Buat Database dan Konfigurasi File .env
 
-Salin file `.env.example` menjadi `.env`:
+Sebelum mengonfigurasi file `.env`, buat terlebih dahulu database baru dengan nama `laravel` di MySQL atau MariaDB Anda. Anda dapat menggunakan phpMyAdmin atau perintah SQL berikut:
+
+```sql
+CREATE DATABASE laravel;
+```
+
+Setelah database dibuat, salin file `.env.example` menjadi `.env`:
 
 ```bash
 cp .env.example .env
@@ -68,7 +80,7 @@ APP_URL=http://127.0.0.1:8000
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nama_database
+DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -94,7 +106,7 @@ php artisan migrate
 Jalankan seeder untuk mengisi data awal:
 
 ```bash
-php artisan db:seed
+php artisan db:seed --class=DatabaseSeeder
 ```
 
 ### 7. Build Frontend Assets
