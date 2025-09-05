@@ -11,7 +11,7 @@ class Wilayah extends Model
 
     protected $table = 'tb_wilayah';
     protected $primaryKey = 'w_id';
-    public $incrementing = false; // karena w_id char(4)
+    public $incrementing = false; 
     protected $keyType = 'string';
 
     protected $fillable = [

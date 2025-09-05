@@ -101,36 +101,47 @@
 
 
   <!-- Table -->
-  <div class="bg-white p-4 rounded-xl shadow overflow-x-auto">
-    <table id="rekapTable" class="display w-full text-sm border border-gray-300">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="border border-gray-300 px-2 py-1">Id Registrasi</th>
-          <th class="border border-gray-300 px-2 py-1">Nama Pangkalan</th>
-          <th class="border border-gray-300 px-2 py-1">Kota</th>
-          <th class="border border-gray-300 px-2 py-1">Status</th>
+<div class="bg-white p-4 rounded-xl shadow overflow-x-auto">
+  <table id="rekapTable" class="display w-full text-sm border border-gray-300">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="border border-gray-300 px-2 py-1">Id Registrasi</th>
+        <th class="border border-gray-300 px-2 py-1">Nama Pangkalan</th>
+        <th class="border border-gray-300 px-2 py-1">Kota</th>
+        <th class="border border-gray-300 px-2 py-1">Status</th>
+        <th class="border border-gray-300 px-2 py-1">Alokasi</th> <!-- kolom baru -->
+        @for ($i = 1; $i <= 31; $i++)
+          <th class="border border-gray-300 px-2 py-1">
+            {{ str_pad($i, 2, '0', STR_PAD_LEFT) }}
+          </th>
+        @endfor
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($rekapitulasi as $r)
+        <tr>
+          <td>{{ $r->pa_id }}</td>
+          <td>{{ $r->pangkalan->pklan_nama_pangkalan ?? '-' }}</td>
+          <td>{{ $r->pangkalan->wilayah->w_nama_kabupaten_atau_kota ?? '-' }}</td>
+          <td>
+            {{ strtolower($r->pa_kondisi) === 'aktif' ? 'Aktif' : 'Tidak Aktif' }}
+          </td>
+          <td>{{ $r->pa_jumlah ?? '-' }}</td> 
           @for ($i = 1; $i <= 31; $i++)
-            <th class="border border-gray-300 px-2 py-1">
-              {{ str_pad($i, 2, '0', STR_PAD_LEFT) }}
-            </th>
+            <td class="
+              @if ($i == 2) bg-gray-300 text-white 
+              @elseif ($i >= 3) bg-green-100 
+              @endif
+            ">
+              {{ $r->tanggal[$i] ?? '' }}
+            </td>
           @endfor
         </tr>
-      </thead>
-      <tbody>
-        @foreach ($rekapitulasi as $r)
-          <tr>
-            <td>{{ $r->pa_id }}</td>
-            <td>{{ $r->pangkalan->pklan_nama_pangkalan ?? '-' }}</td>
-            <td>{{ $r->pangkalan->wilayah->w_nama_kabupaten_atau_kota ?? '-' }}</td>
-            <td>{{ $r->pa_kondisi }}</td>
-            @for ($i = 1; $i <= 31; $i++)
-              <td>{{ $r->tanggal[$i] ?? '' }}</td>
-            @endfor
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-  </div>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+
 
 <!-- DataTables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
@@ -164,10 +175,11 @@
         { extend: 'excelHtml5', className: 'buttons-excel', text: 'Excel',title: 'Rekapitulasi Penyaluran'},
         { extend: 'pdfHtml5', className: 'buttons-pdf', text: 'PDF',title: 'Rekapitulasi Penyaluran',
           customize: function (doc) {
-        doc.content[0].text = 'Rekapitulasi Penyaluran'; // ubah header PDF
+        doc.content[0].text = 'Rekapitulasi Penyaluran'; 
         }
           }
         ]
+
     });
 
     // Trigger export dari dropdown

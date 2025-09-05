@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('tb_perencanaan_agen', function (Blueprint $table) {
             $table->id('pa_id');
-            $table->unsignedBigInteger('pa_pangkalan_id'); // relasi ke tb_pangkalan
-            $table->string('pa_bulan', 7); // format YYYY-MM
+            $table->unsignedBigInteger('pa_pangkalan_id'); 
+            $table->string('pa_bulan', 7); 
             $table->enum('pa_status', ['Cashless', 'Non-Cashless'])->default('Cashless');
             $table->integer('pa_alokasi')->default(0);
 
