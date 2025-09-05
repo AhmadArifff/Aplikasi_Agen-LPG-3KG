@@ -94,6 +94,7 @@
 
                 <!-- Penyaluran Dropdown -->
                 <div x-data="{ open: false }" x-cloak @click.away="open = false" class="w-full">
+                    <!-- Button utama -->
                     <button
                         @click="open = !open"
                         :aria-expanded="open.toString()"
@@ -101,13 +102,14 @@
                         :class="{ 'bg-gray-200': open }"
                     >
                         <span class="flex items-center space-x-2">
-                            <img src="{{ asset('images/arrow-left.png') }}" alt="Penyaluran Icon" class="w-3.5 h-3.">
+                            <img src="{{ asset('images/arrow-left.png') }}" alt="Penyaluran Icon" class="w-3.5 h-3">
                             <span class="text-sm">Penyaluran</span>
                         </span>
                         <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-90': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </button>
+                    <!-- Submenu (muncul/sembunyi) -->
                     <div
                         x-show="open"
                         x-transition:enter="transition ease-out duration-150"
@@ -119,8 +121,16 @@
                         class="ml-6 mt-1 space-y-1"
                         style="display: none;"
                     >
-                        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200 transition-colors text-sm">Submenu 1</a>
-                        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200 transition-colors text-sm">Submenu 2</a>
+                        <a href="{{ url('/admin/penyaluran/form') }}"
+                           class="block px-3 py-2 rounded transition-colors text-sm
+                           {{ request()->is('admin/penyaluran/form') ? 'bg-red-500 text-white' : 'hover:bg-gray-200' }}">
+                            Form Penyaluran
+                        </a>
+                        <a href="{{ url('/admin/penyaluran/rekapitulasi') }}"
+                           class="block px-3 py-2 rounded transition-colors text-sm
+                           {{ request()->is('admin/penyaluran/rekapitulasi') ? 'bg-red-500 text-white' : 'hover:bg-gray-200' }}">
+                            Rekapitulasi Penyaluran
+                        </a>
                     </div>
                 </div>
 
@@ -311,8 +321,16 @@
                         class="ml-6 mt-1 space-y-1"
                         style="display: none;"
                     >
-                        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200 transition-colors text-sm">Submenu 1</a>
-                        <a href="#" class="block px-3 py-2 rounded hover:bg-gray-200 transition-colors text-sm">Submenu 2</a>
+                        <a href="{{ url('/admin/harga-per-kecamatan') }}" 
+                           class="block px-3 py-2 rounded transition-colors text-sm 
+                           {{ request()->is('admin/harga-per-kecamatan') ? 'bg-red-500 text-white' : 'hover:bg-gray-200' }}">
+                            Harga Per Kecamatan
+                        </a>
+                        <a href="{{ url('/admin/input-harian/rekapitulasi') }}" 
+                           class="block px-3 py-2 rounded transition-colors text-sm 
+                           {{ request()->is('admin/input-harian/rekapitulasi') ? 'bg-red-500 text-white' : 'hover:bg-gray-200' }}">
+                            Stok Per Pangkalan
+                        </a>
                     </div>
                 </div>
 

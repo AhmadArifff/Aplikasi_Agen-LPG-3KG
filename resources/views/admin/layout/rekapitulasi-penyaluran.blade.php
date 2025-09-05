@@ -3,13 +3,12 @@
 @section('content')
   <!-- Header -->
   <div class="bg-white p-6 mb-6 shadow-sm w-full flex items-center justify-between">
-    <h1 class="text-2xl font-bold text-gray-700">Rekapitulasi Perencanaan</h1>
+    <h1 class="text-2xl font-bold text-gray-700">Rekapitulasi Penyaluran</h1>
     <button class="text-blue-500 flex items-center gap-1 hover:text-blue-700">
       <span class="text-xl font-bold">+</span>
       <span>Penyaluran</span>
     </button>
   </div>
-
 
  <!-- Filter Section -->
 <div class="bg-white border rounded-lg p-6 mb-6 m-5 shadow-sm">

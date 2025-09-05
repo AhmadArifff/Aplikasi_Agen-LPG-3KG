@@ -22,6 +22,11 @@ class AdminController extends Controller
         $wilayah = Wilayah::all();
         return view('admin.perencanaan.form', compact('wilayah')); // Pastikan view ini ada
     }
+    public function showPeyaluranForm()
+    {
+        $wilayah = Wilayah::all();
+        return view('admin.layout.form_penyaluran', compact('wilayah')); // Pastikan view ini ada
+    }
     // Getpangkalan berdasarkan wilayah (AJAX)
     public function getPangkalanByWilayah($w_id)
     {
@@ -121,6 +126,7 @@ class AdminController extends Controller
     }
     public function store(Request $request)
     {
+        $data = $request->all();
         try {
             // Validasi data yang diterima
             $validated = $request->validate([
@@ -143,7 +149,7 @@ class AdminController extends Controller
                     foreach ($pangkalanList as $p) {
                         foreach ($row['values'] as $tanggal => $jumlah) {
                             Perencanaan::create([
-                                'pa_id'        => (string) Str::uuid(),
+                                'pa_id'        => $this->generateUniqueId(),
                                 'pa_tgl_awal'  => $validated['tanggal_awal'],
                                 'pa_tgl_akhir' => $validated['tanggal_akhir'],
                                 'pa_kondisi'   => $validated['kondisi'],
@@ -161,7 +167,7 @@ class AdminController extends Controller
                     // Jika pangkalan tertentu dipilih
                     foreach ($row['values'] as $tanggal => $jumlah) {
                         Perencanaan::create([
-                            'pa_id'        => (string) Str::uuid(),
+                            'pa_id'        => $this->generateUniqueId(),
                             'pa_tgl_awal'  => $validated['tanggal_awal'],
                             'pa_tgl_akhir' => $validated['tanggal_akhir'],
                             'pa_kondisi'   => $validated['kondisi'],
@@ -190,6 +196,10 @@ class AdminController extends Controller
                 'message' => 'Terjadi kesalahan: ' . $e->getMessage()
             ], 500);
         }
+    }
+    private function generateUniqueId()
+    {
+        return str_pad(mt_rand(1, 999999999999999), 15, '0', STR_PAD_LEFT);
     }
 
 

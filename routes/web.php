@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     
     // Route untuk Perencanaan 
     Route::get('/admin/perencanaan/form', [AdminController::class, 'showPerencanaanForm'])->name('admin.perencanaan.form');
+    Route::get('/admin/penyaluran/form', [AdminController::class, 'showPeyaluranForm'])->name('admin.penyaluran.form');
     Route::post('/admin/perencanaan/get', [AdminController::class, 'getPerencanaan'])->name('admin.perencanaan.get');
 // Route::post('/admin/perencanaan/import', [AdminController::class, 'importData'])->name('admin.perencanaan.import');
 });
@@ -64,5 +65,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/rekapitulasi', [RekapitulasiController::class, 'index'])->name('rekapitulasi.index');
 Route::get('/rekapitulasi/data', [RekapitulasiController::class, 'getData'])->name('rekapitulasi.data');
 
-Route::get('/harga-per-kecamatan', [HargaKecamatanController::class, 'index'])
+Route::get('/admin/harga-per-kecamatan', [HargaKecamatanController::class, 'index'])
     ->name('harga.kecamatan.index');
+
+Route::get('/admin/penyaluran/rekapitulasi', [RekapitulasiController::class, 'penyaluran'])->name('penyaluran.rekapitulasi');
+Route::get('/penyaluran/create', [RekapitulasiController::class, 'create'])
+    ->name('penyaluran.create');
