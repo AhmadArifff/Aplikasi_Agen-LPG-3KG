@@ -37,7 +37,15 @@ cd Aplikasi_Agen-LPG-3KG
 Sebelum menjalankan `composer install`, hapus terlebih dahulu folder `vendor` dan file `composer.lock` jika sudah ada:
 
 ```bash
+# Jika Anda menggunakan Git Bash atau terminal Linux/MacOS:
 rm -rf vendor composer.lock
+
+# Catatan: Perintah di atas akan error jika dijalankan di PowerShell Windows,
+# misalnya:
+# Remove-Item: A parameter cannot be found that matches parameter name 'rf'.
+
+# Jika menggunakan PowerShell, gunakan perintah berikut:
+Remove-Item -Recurse -Force vendor, composer.lock
 ```
 
 Kemudian instal dependensi PHP dengan Composer:
